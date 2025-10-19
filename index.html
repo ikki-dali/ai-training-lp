@@ -126,6 +126,18 @@
 
         return () => observer.disconnect();
       }, []);
+      
+      useEffect(() => {
+        Object.keys(isVisible).forEach((id) => {
+          if (isVisible[id]) {
+            const element = document.getElementById(id);
+            if (element) {
+              element.classList.remove('opacity-0', 'translate-y-10');
+              element.classList.add('opacity-100', 'translate-y-0');
+            }
+          }
+        });
+      }, [isVisible]);
 
       const scrollToContact = () => {
         document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -378,6 +390,145 @@
                   <div className="mt-6 p-4 bg-white/20 rounded-lg backdrop-blur">
                     <p className="font-bold text-lg">結果：93%のコスト削減 & 50倍速！</p>
                   </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 料金プラン */}
+          <section
+            id="pricing"
+            data-animate
+            className="py-20 transition-all duration-1000 opacity-0 translate-y-10"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-4xl font-bold text-center mb-4">
+                <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+                  シンプルな料金体系
+                </span>
+              </h2>
+              <p className="text-xl text-center text-gray-600 mb-16">
+                助成金で最大75%オフ！実質¥87,500から
+              </p>
+              <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div className="bg-white border-2 border-gray-200 p-8 rounded-xl">
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-bold mb-2">スモールチーム</h3>
+                    <p className="text-gray-600">1-5名様</p>
+                  </div>
+                  <div className="text-center mb-6">
+                    <div className="text-gray-400 line-through text-xl mb-2">¥350,000</div>
+                    <div className="text-5xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent mb-2">¥87,500</div>
+                    <p className="text-sm text-gray-600">助成金適用後の実質価格</p>
+                  </div>
+                  <ul className="space-y-3 mb-8">
+                    <li className="flex items-start gap-3">
+                      <div className="w-5 h-5 mt-1 flex-shrink-0"><Check /></div>
+                      <span>1日集中研修（7.5時間）</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-5 h-5 mt-1 flex-shrink-0"><Check /></div>
+                      <span>LP + 提案資料作成</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-5 h-5 mt-1 flex-shrink-0"><Check /></div>
+                      <span>オンライン/対面選択可</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-5 h-5 mt-1 flex-shrink-0"><Check /></div>
+                      <span>研修後1ヶ月フォローアップ</span>
+                    </li>
+                  </ul>
+                  <button
+                    onClick={scrollToContact}
+                    className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-full font-semibold transition-colors"
+                  >
+                    お問い合わせ
+                  </button>
+                </div>
+
+                <div className="bg-gradient-to-br from-orange-500 to-red-500 p-8 rounded-xl transform scale-105 shadow-2xl relative text-white">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
+                    人気No.1
+                  </div>
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-bold mb-2">レギュラーチーム</h3>
+                    <p className="text-white/80">6-10名様</p>
+                  </div>
+                  <div className="text-center mb-6">
+                    <div className="text-white/60 line-through text-xl mb-2">¥450,000</div>
+                    <div className="text-5xl font-bold mb-2">¥112,500</div>
+                    <p className="text-sm text-white/80">助成金適用後の実質価格</p>
+                  </div>
+                  <ul className="space-y-3 mb-8">
+                    <li className="flex items-start gap-3">
+                      <div className="w-5 h-5 mt-1 flex-shrink-0"><Check /></div>
+                      <span>1日集中研修（7.5時間）</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-5 h-5 mt-1 flex-shrink-0"><Check /></div>
+                      <span>LP + 提案資料作成</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-5 h-5 mt-1 flex-shrink-0"><Check /></div>
+                      <span>オンライン/対面選択可</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-5 h-5 mt-1 flex-shrink-0"><Check /></div>
+                      <span>研修後3ヶ月フォローアップ</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-5 h-5 mt-1 flex-shrink-0"><Check /></div>
+                      <span>質問チャット無制限</span>
+                    </li>
+                  </ul>
+                  <button
+                    onClick={scrollToContact}
+                    className="w-full bg-white text-orange-500 hover:bg-gray-100 py-3 rounded-full font-bold transition-colors"
+                  >
+                    今すぐ申し込む
+                  </button>
+                </div>
+              </div>
+
+              <div className="mt-12 text-center">
+                <div className="inline-block bg-gradient-to-r from-orange-500 to-red-500 p-6 rounded-xl text-white">
+                  <p className="text-xl font-bold mb-2">継続サポートオプション</p>
+                  <p className="text-3xl font-bold mb-2">月額¥50,000</p>
+                  <p className="text-sm text-white/80">フォローアップ研修 + 質問し放題</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* FAQ */}
+          <section
+            id="faq"
+            data-animate
+            className="py-20 transition-all duration-1000 opacity-0 translate-y-10"
+          >
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-4xl font-bold text-center mb-16">よくある質問</h2>
+              <div className="space-y-6">
+                <div className="bg-white p-6 rounded-xl shadow-lg">
+                  <h3 className="text-xl font-bold mb-3 text-orange-500">Q. AIを使ったことがなくても大丈夫ですか？</h3>
+                  <p className="text-gray-700">A. はい、問題ありません。基礎から丁寧に教えますので、初心者の方でも1日で実践的なスキルが身につきます。</p>
+                </div>
+                <div className="bg-white p-6 rounded-xl shadow-lg">
+                  <h3 className="text-xl font-bold mb-3 text-orange-500">Q. 助成金の申請は難しいですか？</h3>
+                  <p className="text-gray-700">A. 人材開発支援助成金の申請サポートも行っております。必要書類や申請方法を丁寧にご説明しますので、ご安心ください。</p>
+                </div>
+                <div className="bg-white p-6 rounded-xl shadow-lg">
+                  <h3 className="text-xl font-bold mb-3 text-orange-500">Q. オンラインと対面、どちらがおすすめですか？</h3>
+                  <p className="text-gray-700">A. 効果はほぼ同じです。遠方の方や複数拠点から参加される場合はオンライン、チームビルディングも兼ねたい場合は対面をおすすめします。</p>
+                </div>
+                <div className="bg-white p-6 rounded-xl shadow-lg">
+                  <h3 className="text-xl font-bold mb-3 text-orange-500">Q. 研修後のサポートはありますか？</h3>
+                  <p className="text-gray-700">A. はい。基本プランには1-3ヶ月のフォローアップが含まれています。継続サポート（月額¥50,000）もご用意しております。</p>
+                </div>
+                <div className="bg-white p-6 rounded-xl shadow-lg">
+                  <h3 className="text-xl font-bold mb-3 text-orange-500">Q. 本当に1日で完成しますか？</h3>
+                  <p className="text-gray-700">A. はい。AIを活用することで、通常数ヶ月かかる作業を1日で完結できます。研修終了時にLPと提案資料をお持ち帰りいただけます。</p>
                 </div>
               </div>
             </div>
